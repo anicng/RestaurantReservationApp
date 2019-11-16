@@ -83,23 +83,22 @@
     <script type="text/javascript">
         $.get('/api/reserve', function (res) {
             console.log(res);
-            console.log(res[0]);
             if (res) {
                 res.forEach(element => {
-                    showList(res);
+                    showList(element);
                 });
             }
         })
-        function showList(data) {
+        function showList(ele) {
             var newList = $("<li>");
             newList.addClass("list-group-item");
 
-            newList.text(data[0].id);
+            newList.text(ele.id);
             $("#reservations-table").append(newList)
         };
 
         // $('#clear-table').on('click', function () {
-        //     reseravation = [];
+        //     reseravations = [];
         // });
 
     </script>
