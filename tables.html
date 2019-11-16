@@ -26,7 +26,7 @@
                     <hr class="my-4">
                     <h2>Current Reservations and Waiting List </h2>
                     <br>
-                    <a href="/tables"><button type="button" class="btn btn-danger btn-lg"><i
+                    <a href="/reserve" id="reservation-btn"><button type="button" class="btn btn-danger btn-lg"><i
                                 class="fas fa-calendar-day"></i>
                             Make Reservation</button></a>
                     <a href="/"><button type="button" class="btn btn-light btn-lg"><i class="fas fa-home"></i>
@@ -46,7 +46,7 @@
                     <div class="card-header">
                         Current Reservations
                     </div>
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush" id="reservations-table">
                         <li class="list-group-item">Reservation 1</li>
                         <li class="list-group-item">Reservation 2</li>
                         <li class="list-group-item">Reservation 3</li>
@@ -62,7 +62,7 @@
                     <div class="card-header">
                         Waitlist
                     </div>
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush" id="waitlist-table">
                         <li class="list-group-item">Waitlist 1</li>
                         <li class="list-group-item">Waitlist 2</li>
                         <li class="list-group-item">Waitlist 3</li>
@@ -73,14 +73,25 @@
     </div>
     <br>
     <footer class="container">
-        <a href="#">Clear Table</a> | <a href="#">API Table Link</a> | <a href="#">Api Waitlist</a>
+        <a href="#" id="clear-table">Clear Table</a> | <a href="#" id="apitablelink">API Table Link</a> | <a href="#" id="apiwaitlist">Api Waitlist</a>
     </footer>
 
 
 
 
     <!-- javascript  -->
-    <script type="text/javascript" src="javascript/app.js"></script>
+    <script type="text/javascript" src="javascript/app.js">
+        $('#clear-table').on('click', function () {
+            reseravation =[];
+        });
+        $('#apitablelink').on('click', function(){
+
+        });
+        $('apiwaitlist').on('click', function(){
+
+        });
+
+    </script>
     <!-- Bootstrap  -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -5,6 +5,7 @@ var fs = require("fs");
 var PORT = 3000;
 var app = express();
 
+// Create an array to hold waitlist reservations
 var waitlist = [];
 // Create an array to hold reservations
 var reservations = [];

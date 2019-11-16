@@ -9,8 +9,6 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/2fd1e693d6.js" crossorigin="anonymous"></script>
   <title></title>
@@ -41,19 +39,19 @@
     <div class="row">
       <div class="col">
         <form class="border p-4 mb-5">
-          <div class="form-group">
+          <div class="form-group" id="nameDiv">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name">
           </div>
-          <div class="form-group">
+          <div class="form-group" id="phoneDiv">
             <label for="phoneNumber">Phone Number</label>
             <input type="text" class="form-control" id="phoneNumber">
           </div>
-          <div class="form-group">
+          <div class="form-group" id="emailDiv">
             <label for="email">Email Adress</label>
             <input type="text" class="form-control" id="email">
           </div>
-          <div class="form-group">
+          <div class="form-group" id="idDiv">
             <label for="id">Unique ID</label>
             <input type="text" class="form-control" id="id">
           </div>
@@ -62,25 +60,6 @@
       </div>
     </div>
   </div>
-
-  <script type="text/javascript">
-    $("#reserve").on("click", function (event) {
-      event.preventDefault();
-      var newReservation = {
-        name: $("#name").val().trim(),
-        phone: $("#phoneNumber").val().trim(),
-        email: $("#email").val().trim(),
-        id: $("#id").val().trim()
-      };
-
-      $.post("/api/reserve", newReservation)
-        .then(function (data) {
-          console.log("reserve.html", data);
-          alert("Adding your reservation");
-        });
-    });
-  </script>
-
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -92,6 +71,104 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+    var alert = "<div class='alert alert-danger' role='alert'></div>";
+
+    $("#reserve").on("click", function (event) {
+      event.preventDefault();
+      $("#nameAlert").remove();
+      $("#phoneAlert").remove();
+      $("#emailAlert").remove();
+      $("#idAlert").remove();
+      var theName = $("#name").val().trim();
+      var thePhone = $("#phoneNumber").val().trim();
+      var theEmail = $("#email").val().trim();
+      var theID = $("#id").val().trim();
+
+      var nameValid = false;
+      var phoneValid = false;
+      var emailValid = false;
+      var idValid = false;
+
+      var namePattern = /^[A-Za-z0-9-' ]+$/;
+      var phonePattern = /^[0-9-]+$/;
+      var emailPattern = /^[A-Za-z0-9@!#$%&'*+-\/=?^_`{|}~.]+$/;
+      var idPattern = /^[A-Za-z0-9-_]+$/;
+
+      if (theName === "") {
+        var nameAlert = $(alert);
+        nameAlert.attr("id", "nameAlert");
+        nameAlert.text("Please enter your name.");
+        $("#nameDiv").prepend(nameAlert);
+      } else if (!theName.match(namePattern)) {
+        var nameAlert = $(alert);
+        nameAlert.attr("id", "nameAlert");
+        nameAlert.text("Your name can only contain letters, numbers, hyphens, apostrophes, and spaces.");
+        $("#nameDiv").prepend(nameAlert);
+      } else {
+        nameValid = true;
+      }
+
+      if (thePhone === "") {
+        var phoneAlert = $(alert);
+        phoneAlert.attr("id", "phoneAlert");
+        phoneAlert.text("Please enter your phone number.");
+        $("#phoneDiv").prepend(phoneAlert);
+      } else if (!thePhone.match(phonePattern)) {
+        var phoneAlert = $(alert);
+        phoneAlert.attr("id", "phoneAlert");
+        phoneAlert.text("Your phone number can only contain numbers and hyphens.");
+        $("#phoneDiv").prepend(phoneAlert);
+      } else {
+        phoneValid = true;
+      }
+
+      if (theEmail === "") {
+        var emailAlert = $(alert);
+        emailAlert.attr("id", "emailAlert");
+        emailAlert.text("Please enter your email address.");
+        $("#emailDiv").prepend(emailAlert);
+      } else if (!theEmail.match(emailPattern)) {
+        var emailAlert = $(alert);
+        emailAlert.attr("id", "emailAlert");
+        emailAlert.text("You have an invalid character in your email address. Please try again or use a different email address.");
+        $("#emailDiv").prepend(emailAlert);
+      } else {
+        emailValid = true;
+      }
+
+      if (theID === "") {
+        var idAlert = $(alert);
+        idAlert.attr("id", "idAlert");
+        idAlert.text("Please enter a unique ID for yourself.");
+        $("#idDiv").prepend(idAlert);
+      } else if (!theID.match(idPattern)) {
+        var idAlert = $(alert);
+        idAlert.attr("id", "idAlert");
+        idAlert.text("Please only use letters, numbers, hyphens, and underscores in your unique ID.");
+        $("#idDiv").prepend(idAlert);
+      } else {
+        idValid = true;
+      }
+
+      if (nameValid && phoneValid && emailValid && idValid) {
+        var newReservation = {
+          name: $("#name").val().trim(),
+          phone: $("#phoneNumber").val().trim(),
+          email: $("#email").val().trim(),
+          id: $("#id").val().trim()
+        };
+
+        // $.post("/api/reserve", newReservation)
+        //   .then(function (data) {
+        //     console.log("reserve.html", data);
+        //     alert("Adding your reservation");
+        //   });
+      }
+    });
+  </script>
 </body>
 
+>>>>>>> 0ac7463ce4586d3223599192d064725c036608f0
 </html>
