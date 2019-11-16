@@ -22,7 +22,7 @@ app.get("/reserve", function (req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
-app.get("/api/reserve", function (req,res) {
+app.get("/api/reserve", function (req, res) {
     return res.json(reservations);
 })
 
@@ -32,9 +32,15 @@ app.get("/tables", function (req, res) {
 
 app.post("/api/reserve", function (req, res) {
     var newReservation = req.body;
-    console.log(newReservation);
-    reservations.push(newReservation);
-    res.json(newReservation);
+    if (reservations.length < 5) {
+        reservations.push(newReservation);
+        res.json(newReservation);
+        console.log("reservations", reservations);
+    } else {
+        waitlist.push(newReservation);
+        res.json(newReservation);
+        console.log("waitlist", waitlist);
+    }
 });
 
 app.listen(PORT, function () {
