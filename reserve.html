@@ -62,8 +62,7 @@
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -160,15 +159,18 @@
           id: $("#id").val().trim()
         };
 
-        // $.post("/api/reserve", newReservation)
-        //   .then(function (data) {
-        //     console.log("reserve.html", data);
-        //     alert("Adding your reservation");
-        //   });
+        $.post("/api/reserve", newReservation)
+          .then(function (data) {
+            console.log("reserve.html", data);
+            alert("Adding your reservation");
+          });
       }
     });
   </script>
 </body>
 
+<<<<<<< HEAD
 >>>>>>> 0ac7463ce4586d3223599192d064725c036608f0
+=======
+>>>>>>> 4f4f417faada75d2bce7ca20916a6385daa74bef
 </html>
