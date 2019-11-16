@@ -48,8 +48,7 @@
                     </div>
                     <ul class="list-group list-group-flush" id="reservations-table">
                         <li class="list-group-item">Reservation 1</li>
-                        <li class="list-group-item">Reservation 2</li>
-                        <li class="list-group-item">Reservation 3</li>
+
                     </ul>
                 </div>
             </div>
@@ -73,23 +72,39 @@
     </div>
     <br>
     <footer class="container">
-        <a href="#" id="clear-table">Clear Table</a> | <a href="#" id="apitablelink">API Table Link</a> | <a href="#" id="apiwaitlist">Api Waitlist</a>
+        <a href="#" id="clear-table">Clear Table</a> | <a href="#" id="apitablelink">API Table Link</a> | <a href="#"
+            id="apiwaitlist">Api Waitlist</a>
     </footer>
 
 
 
 
     <!-- javascript  -->
-    <script type="text/javascript" src="javascript/app.js">
-        $('#clear-table').on('click', function () {
-            reseravation =[];
-        });
-        $('#apitablelink').on('click', function(){
+    <script type="text/javascript">
+        $.get('/api/reserve', function (res) {
+            console.log(res);
+            console.log(res[0]);
+            if (res) {
+                showList(res);
+            }
+        })
+        function showList(data) {
+            var newList = $("<li>");
+            newList.addClass("list-group-item");
 
-        });
-        $('apiwaitlist').on('click', function(){
+            newList.text(data[0].id);
+            $("#reservations-table").append(newList)
+        };
 
-        });
+        // $('#clear-table').on('click', function () {
+        //     reseravation = [];
+        // });
+        // $('#apitablelink').on('click', function () {
+
+        // });
+        // $('apiwaitlist').on('click', function () {
+
+        // });
 
     </script>
     <!-- Bootstrap  -->
