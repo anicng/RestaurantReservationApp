@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/2fd1e693d6.js" crossorigin="anonymous"></script>
+    <title>Tables</title>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron text-center">
+                    <h1><i class="fas fa-fire"></i> Hot Restaurant</h1>
+                    <hr class="my-4">
+                    <h2>Current Reservations and Waiting List </h2>
+                    <br>
+                    <a href="/reserve" id="reservation-btn"><button type="button" class="btn btn-danger btn-lg"><i
+                                class="fas fa-calendar-day"></i>
+                            Make Reservation</button></a>
+                    <a href="/"><button type="button" class="btn btn-light btn-lg"><i class="fas fa-home"></i>
+                        </button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Table container  -->
+    <div class="container">
+        <!-- Current Reservations -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        Current Reservations
+                    </div>
+                    <ul class="list-group list-group-flush" id="reservations-table">
+                        <li class="list-group-item">Reservation 1</li>
+                        <li class="list-group-item">Reservation 2</li>
+                        <li class="list-group-item">Reservation 3</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Wait List  -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        Waitlist
+                    </div>
+                    <ul class="list-group list-group-flush" id="waitlist-table">
+                        <li class="list-group-item">Waitlist 1</li>
+                        <li class="list-group-item">Waitlist 2</li>
+                        <li class="list-group-item">Waitlist 3</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <footer class="container">
+        <a href="#" id="clear-table">Clear Table</a> | <a href="#" id="apitablelink">API Table Link</a> | <a href="#" id="apiwaitlist">Api Waitlist</a>
+    </footer>
+
+
+
+
+    <!-- javascript  -->
+    <script type="text/javascript" src="javascript/app.js">
+        $('#clear-table').on('click', function () {
+            reseravation =[];
+        });
+        $('#apitablelink').on('click', function(){
+
+        });
+        $('apiwaitlist').on('click', function(){
+
+        });
+
+    </script>
+    <!-- Bootstrap  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
