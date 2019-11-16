@@ -85,7 +85,9 @@
             console.log(res);
             console.log(res[0]);
             if (res) {
-                showList(res);
+                res.forEach(element => {
+                    showList(res);
+                });
             }
         })
         function showList(data) {
