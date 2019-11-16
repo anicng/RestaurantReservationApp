@@ -34,11 +34,19 @@ app.post("/api/reserve", function (req, res) {
     var newReservation = req.body;
     if (reservations.length < 5) {
         reservations.push(newReservation);
-        res.json(newReservation);
+        var obj = {
+            list: "main",
+            newReservation
+        }
+        res.json(obj);
         console.log("reservations", reservations);
     } else {
         waitlist.push(newReservation);
-        res.json(newReservation);
+        var obj = {
+            list: "waitlist",
+            newReservation
+        }
+        res.json(obj);
         console.log("waitlist", waitlist);
     }
 });
