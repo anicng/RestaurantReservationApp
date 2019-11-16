@@ -81,6 +81,20 @@
 
     <!-- javascript  -->
     <script type="text/javascript" src="javascript/app.js">
+
+        $.get('/api/reservations', function(data){
+            console.log(data);
+            if (data){
+                showList();
+            }
+        })
+        function showList (){
+            var newList = $("<li>");
+            
+            newList.text(data.id);
+            $("#reservations-table").append(newList)
+        };
+        
         $('#clear-table').on('click', function () {
             reseravation =[];
         });
